@@ -3,4 +3,5 @@ export const getHighestRated = (movies) => {
   movies.forEach((movie) => {
     if (movie.vote_average > topRated.vote_average) topRated = movie;
   });
+  return topRated;
 };

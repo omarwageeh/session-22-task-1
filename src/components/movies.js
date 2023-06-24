@@ -52,14 +52,14 @@ export default function Movies() {
             })}
 
             <div className="col-md-4 text-center">
-              <button onClick={() => dispatch(nextPage())}>prev</button>
               <button
                 onClick={() => {
                   if (page !== 1) dispatch(prevPage());
                 }}
               >
-                next
+                prev
               </button>
+              <button onClick={() => dispatch(nextPage())}>next</button>
             </div>
           </div>
         </div>

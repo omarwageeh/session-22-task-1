@@ -10,6 +10,7 @@ export default function Header() {
   const movies = useSelector(({ movies }) => movies.data);
   const status = useSelector(({ movies }) => movies.status);
   const page = useSelector(({ movies }) => movies.page);
+
   useEffect(() => {
     if (status === "success") {
       dispatch(putHighest(getHighestRated(movies)));
@@ -22,28 +23,21 @@ export default function Header() {
     return <Loader />;
   }
 
-  if (topRated !== {})
+  if (Object.keys(topRated).length)
     return (
       <div class="container">
         <div class="row g-3" id="stats-target">
           <div class="col-md-12">
-            <div class="col-wrapper d-flex">
-              <h2>Movies</h2>
-            </div>
-          </div>
-          <script id="stats-template" type="x-tmpl-mustache">
-            <div class="col-md-12">
-              <div class="card p-1 rounded-0">
-                <div class="card-body">
-                  <h3>Stats</h3>
-                  <p>Current page: {page}</p>
-                  <p>Number of Movies: {topRated.numberOfMovies}</p>
-                  <p>Top rated movie: {topRated.original_title}</p>
-                  <p>Rating: {topRated.vote_average}</p>
-                </div>
+            <div class="card p-1 rounded-0">
+              <div class="card-body text-left">
+                <h3>Stats</h3>
+                <p>Current page: {page}</p>
+                <p>Number of Movies: {movies.length}</p>
+                <p>Top rated movie: {topRated.original_title}</p>
+                <p>Rating: {topRated.vote_average}</p>
               </div>
             </div>
-          </script>
+          </div>
         </div>
       </div>
     );
